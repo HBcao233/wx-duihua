@@ -95,7 +95,6 @@
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
       <!-- 头部 -->
       <div class="navbar-header">
-        <a href="/wxduihua.html" class="top-logo">微信对话</a>
         <a href="javascript:;" id="btn-menu">Menu</a>
 
       </div>
@@ -495,12 +494,7 @@
             </div>
           </div>
         </div>
-        <!-- <div class="my-btns">
-          <div class="loading">正在生成，请稍候......</div>
-          <input id="save" class="btn btn-primary" type="button" value="生成图片" />
-          <a id="btn-water" class="btn btn-danger btn_no_water" target="_blank" href="http://www.12tool.com/pay">充值</a>
-          <i style="margin-left:10px;">如充值成功,请点击左侧[生成图片]按钮</i>
-        </div> -->
+
         <div class="phone-wrap">
           <div id="iphone" class="iphone iphone-preview">
             <div class="i-top">
@@ -573,10 +567,7 @@
       </div>
 
       <script type="text/javascript">
-        set_water();
-        setInterval(function () {
-          set_water();
-        }, 2000);
+
         //消息数目
         var i_n_count = randomString(1);
         if (i_n_count > 0) {
@@ -1078,7 +1069,7 @@
         _html.find('img').click(function () {
           var src = $(this).attr('src');
           $('.a-u-pic-bodybg img').attr("src", src);
-          $('.i-body').css('background-image', 'url('images / 4f3daeac1d0d495191cbecdc3ca9b5b2.gif')');
+          $('.i-body').css('background-image', "url('images / 4f3daeac1d0d495191cbecdc3ca9b5b2.gif')");
 
         });
         $("#bglist").html(_html);
@@ -1086,31 +1077,6 @@
 
     });
   </script>
-
-
-  <script type="text/javascript">
-    (function () {
-      var ThinkPHP = window.Think = {
-        "ROOT": "", //当前网站地址
-        "APP": "", //当前项目地址
-        "PUBLIC": "/Public", //项目公共目录地址
-        "DEEP": "/", //PATHINFO分割符
-        "MODEL": ["2", "", "html"],
-        "VAR": ["m", "c", "a"]
-      }
-    })();
-  </script>
-  <div style="display: none">
-    <script>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?010af47f72a51e97131f1828d7caabb8";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  </div>
 </body>
 
 </html>
