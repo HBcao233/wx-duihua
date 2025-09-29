@@ -304,13 +304,20 @@ a:focus, a:hover{
   left: auto;
   right: 0;
 }
-.i-b-rec-text img.qq_emoji,
-.i-b-sen-text img.qq_emoji{
+.i-b-rec-text .emoji,
+.i-b-sen-text .emoji {
+  display: inline-block;
   position: static;
   width: 48px;
   height: 48px;
   vertical-align: bottom;
   background: none;
+  max-width: 100%;
+  min-height: unset;
+  min-height: unset;
+  max-height: unset;
+  padding: 0;
+  margin: 0;
 }
 .i-b-rec-text div,
 .i-b-sen-text div{
@@ -397,7 +404,6 @@ a:focus, a:hover{
 }
 .i-b-rec-text div.i-b-pay span,
 .i-b-sen-text div.i-b-pay span{
-  background: url(../images/i-pay-send.png) no-repeat;
   width: 429px;
   height: 186px;
   border: none;
@@ -423,13 +429,13 @@ a:focus, a:hover{
 .i-b-sen-text div.i-b-pay span i{
   width: 260px;
   height: 72px;
-  background: url(../images/i-pay-icon-send.png) no-repeat;
+  /* background: url(../images/i-pay-icon-send.png) no-repeat; */
   left: 34px;
   top: 28px;
 }
 .i-b-rec-text div.i-b-pay span.i-pay-rec i,
 .i-b-sen-text div.i-b-pay span.i-pay-rec i{
-  background: url(../images/i-pay-icon-rec.png) no-repeat;
+  /* background: url(../images/i-pay-icon-rec.png) no-repeat; */
 }
 .i-b-sen-text div.i-b-pay span.i-pay-send i,
 .i-b-sen-text div.i-b-pay span.i-pay-rec i{
@@ -450,7 +456,7 @@ a:focus, a:hover{
 }
 
 .i-b-rec-text div.i-b-voice b,
-.i-b-sen-text div.i-b-voice b{
+.i-b-sen-text div.i-b-voice b {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -459,18 +465,18 @@ a:focus, a:hover{
   top: 20px;
   left: 20px;
 }
-.i-b-sen-text div.i-b-voice b{
+.i-b-sen-text div.i-b-voice b {
   background: url(../images/sen-record.png) no-repeat;
   right: 20px;
   left: auto;
 }
 .i-b-rec-text div.i-b-voice em,
-.i-b-sen-text div.i-b-voice em{
+.i-b-sen-text div.i-b-voice em {
   color: #999;
   position: absolute;
   right: -115px;
   top: 8px;
-  width: 100px;
+  width: auto;
   padding: 20px 0;
 }
 .i-b-sen-text div.i-b-voice em{
@@ -712,7 +718,6 @@ a:focus, a:hover{
 }
 .faceTab {
   position: relative;
-  bottom: 331px;
   z-index: 10;
   width: 457px;
   height: 6px;
@@ -750,20 +755,18 @@ a:focus, a:hover{
   border-left: 1px solid transparent;
   border-right: 1px solid transparent;
 }
-.faceTab a.chooseFaceTab {
+.faceTab a.active {
   background-color: #FFF;
   border: 1px solid #D5D5D5;
   border-bottom: 1px solid #FFF;
   border-top: none;
 }
 .faceWrap {
-  position: absolute;
   z-index: 0;
   background-color: #FFF;
   width: 434px;
   border: 1px solid #9FA0A0;
-  padding: 46px 20px 20px;
-  bottom: 4px;
+  padding: 20px;
   margin-bottom: 88px;
   _height: 172px;
   overflow-y: hidden;
@@ -1859,4 +1862,13 @@ img{
     width: 88%;
   }
 
+}
+
+button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  margin: 5px;
+  margin-bottom: 50px;
 }

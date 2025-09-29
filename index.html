@@ -33,20 +33,10 @@
   <link href="css/dropdown.css" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" type="text/css" href="css/common.css">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.min.js"></script>
-<![endif]-->
+
 
   <!-- jQuery -->
   <script src="js/jquery-1.10.2.min.js"></script>
-  <script>
-    var is_check_brower = true;
-    var is_mobile = '';
-    var image_type = 0;
-  </script>
 
   <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>
@@ -60,16 +50,10 @@
   <script type="text/javascript" src="js/html2canvas.min.js"></script>
   <script type="text/javascript" src="js/emoji.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
+  <script src="js/pako_v2.0.4.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
   <script src="js/bootbox.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/m.css">
-  <script>
-    $(function () {
-      $('#btn-menu').click(function () {
-        $('.sidebar-nav').toggle();
-      });
-    });
-  </script>
   <link rel="stylesheet" type="text/css" href="css/wx2019.css">
   <style>
     .modal-dialog {
@@ -216,6 +200,7 @@
           <ul class="nav nav-tabs">
             <li class="active"><a href="#w1" data-toggle="tab">外观设置</a></li>
             <li><a href="#w2" data-toggle="tab">对话设置</a></li>
+            <li><a href="#w3" data-toggle="tab">导出图片</a></li>
           </ul>
           <!-- Tab panes -->
           <div class="tab-content">
@@ -470,7 +455,7 @@
                       </div>
                       <p></p>
                     </div>
-                    <div class="a-u-dialog" style="clear:both;"><a class="btn btn-primary" data-type="left"
+                    <div class="a-u-dialog" style="clear: both;"><a class="btn btn-primary" data-type="left"
                         href="#">添加文字对话</a></div>
                     <div class="a-u-dialog-pic"><a class="btn btn-warning" data-type="left" href="#">添加图片对话</a></div>
                     <div class="a-u-dialog-voice"><a class="btn btn-primary" data-type="left" href="#">添加语音对话</a></div>
@@ -480,7 +465,7 @@
                     </div>
                     <div class="a-u-dialog-pay"><a class="btn btn-primary" data-dir="send" data-type="left"
                         href="#">添加转账对话</a></div>
-                    <div class="a-u-dialog-pay"><a class="btn btn-primary" data-dir="rec" data-type="left"
+                    <div class="a-u-dialog-pay"><a class="btn btn-primary" data-dir="receive" data-type="left"
                         href="#">添加收钱对话</a></div>
                     <div class="a-u-dialog-master"><a class="btn btn-primary" href="#">设为主人</a></div>
                     <div class="a-u-dialog-del"><a class="btn btn-danger" href="#">删除用户</a></div>
@@ -492,6 +477,11 @@
                 </div>
               </div>
             </div>
+            
+            <div class="tab-pane fade" id="w3">
+              <button type="button" class="btn-primary" id="save">保存图片</button>
+            </div>
+            
           </div>
         </div>
 
@@ -515,466 +505,25 @@
                 </div>
               </div>
             </div>
-            <div class="i-body">
-              <div class="i-b-sen-text"><img src="picture/14.jpg">
-                <div class="redpacket">
-                  <div class="content"><i class="arraw"><b></b></i>
-                    <div class="main clear-div"><i class="icon"></i>
-                      <h3>恭喜发财，大吉大利！</h3>
-                    </div>
-                    <div class="clear-div foot">
-                      <h3>微信红包</h3>
-                    </div><a class="msg-del"></a>
-                  </div>
-                </div>
-              </div>
-              <div class="i-b-time"><span><img src="picture/a-redpacket-icon.png" class="icon_redpacket"> 冷夕颜领取了你的<a
-                    class="orange">红包</a></span><a class="msg-del"></a></div>
-              <div class="i-b-rec-text"><img src="picture/33.jpg">
-                <div>
-                  <p class="i-b-nick" style="display: none;">擦掉眼泪我依旧是王</p>
-                  <span><i></i><em>这个是示例对话哦，你先点击右上角绿色的“清除对话”按钮，然后切换到对话设置那里，添加你要的对话类型就行了，需要多个用户进行对话请点击“添加用户”按钮添加用户，然后添加对话即可<img
-                        class="qq_emoji" src="picture/expression_22@2x.png"></em><a class="msg-del"></a></span>
-                </div>
-              </div>
-              <div class="i-b-time"><span>昨天 08:33</span><a class="msg-del"></a></div>
-              <div class="i-b-rec-text"><img src="picture/33.jpg">
-                <div class="i-b-pay">
-                  <p class="i-b-nick" style="display: none;">扬眉淡看</p><span class="i-pay-send"><i></i><em>88.88</em><a
-                      class="msg-del"></a></span>
-                </div>
-              </div>
-              <div class="i-b-sen-text"><img src="picture/14.jpg">
-                <div class="i-b-pay"><span class="i-pay-rec"><i></i><em>88.88</em><a class="msg-del"></a></span></div>
-              </div>
-            </div>
-            <div class="i-bottom i-bottom-wechat">
-
-            </div>
+            <div class="i-body"></div>
+            <div class="i-bottom i-bottom-wechat"></div>
           </div>
         </div>
       </div>
 
       <div class="emojiPanel" id="emojiPanel">
         <ul class="faceTab">
-          <li><a class="chooseFaceTab" href="javascript:;">QQ表情</a></li>
-          <!--<li><a href="javascript:;">符号表情</a></li>
-        <li><a href="javascript:;">动画表情</a></li>-->
+          <li><a data-emoji="qq_emoji" href="javascript:;">QQ表情</a></li>
+          <li><a class="active" data-emoji="wx_emoji" href="javascript:;">微信表情</a></li>
+          <!--<li><a href="javascript:;">符号表情</a></li>-->
         </ul>
         <div class="faceWrap" style="zoom:1;outline:none;">
           <div class="faceBox emojiArea"></div>
         </div>
       </div>
-
-      <script type="text/javascript">
-
-        //消息数目
-        var i_n_count = randomString(1);
-        if (i_n_count > 0) {
-          $('.input-i-n-count').val(i_n_count);
-          $('.i-n-count').text(i_n_count);
-        }
-        $('.input-i-n-count').bind('input propertychange', function () {
-          var val = $(this).val();
-          if (isNaN(val) || val == 0) {
-            $('.i-n-count').text('');
-            return false;
-          }
-          val = $(this).val();
-          $('.i-n-count').text(val);
-        });
-        $('.btn-del-i-n-count').click(function () {
-          $('.i-n-count').text('');
-          $('.input-i-n-count').val('');
-          return false;
-        });
-
-        $('body').on('click', '.a-u-dialog a', function () {
-          var user = $(this).parents('.add-user');
-          var index = user.index();
-          var name = user.find('.a-u-name .a-u-data-name').val();
-          var content = user.find('.a-u-name textarea').val();
-          var img = $(this).parent().parent().find('.a-u-pic-show img').clone();
-          var type = user.find('.a-u-dialog-master a').hasClass('btn-success');
-
-          if (name == '') {
-            alert('请输入用户名！');
-            return false;
-          }
-
-          if (content == '') {
-            alert('请输入聊天内容！');
-            return false;
-          }
-
-          if (!img.length) {
-            img = '<img src="images/default-head.png" />';
-          }
-
-          content = replace_qq_emoji(content);
-
-          var msg_class = type ? 'i-b-sen-text' : 'i-b-rec-text';
-          var nick = type ? '' : '<p class="i-b-nick">' + name + '</p>';
-
-          var dialog = $('<div class="' + msg_class + '"><div>' + nick + '<span><i></i><em>' + content + '</em><a class="msg-del"></a></span></div></div>');
-          dialog.prepend(img);
-          $('.i-body').append(dialog);
-          //显示名称
-          $(".radio-i-b-nick:checked").click();
-          return false;
-        });
-
-        $('.add-time-btn').click(function () {
-          var year = $('.slt-year option:selected').val();
-          var month = $('.slt-month option:selected').val();
-          var day = $('.slt-day option:selected').val();
-          var xinqi = $('.slt-xinqi option:selected').val();
-          var shi = $('.slt-shi option:selected').val();
-          var hour = $('.slt-hour option:selected').val();
-          var minite = $('.slt-minite option:selected').val();
-          var str = '';
-          if (year != '-')
-            str += year + '年';
-          if (month != '-')
-            str += month + '月';
-          if (day != '-')
-            str += day + '日 ';
-          if (xinqi != '-')
-            str += xinqi + ' ';
-          if (shi != '-')
-            str += shi;
-          str += hour + ':';
-          str += minite;
-          var html = '<div class="i-b-time"><span>' + str + '</span><a class="msg-del"></a></div>';
-          $('.i-body').append(html);
-          return false;
-        });
-
-        var set_body_bg = function () {
-          var img = $('.a-u-pic-bodybg img');
-          var src = img.attr('src');
-          $('.i-body').css('background-image', 'url(' + src + ')');
-
-        }
-
-
-        $('body').on('change', '.a-u-pic-show input', function () {
-          var img = document.createElement('img');//创建 img 对象
-          var _this = $(this);
-          var callback = _this.attr('data-callback');
-
-          window.URL = window.URL || window.webkitURL;
-
-          var imgFile = $(this).get(0);
-
-          if (window.URL && imgFile.files[0]) {
-            var reader = new FileReader();
-            reader.readAsDataURL(imgFile.files[0]);
-            reader.onload = function (e) {
-              var img = '<img src="' + this.result + '" alt=""/>';
-              _this.parent().find('img').remove();
-              _this.parent().append(img);
-
-              if (callback) {
-                eval(callback + '()');
-              }
-            }
-          }
-        });
-
-        //图片对话上传图片
-        $('body').on('change', '.a-u-pic-show-pic input', function () {
-          var img = document.createElement('img');//创建 img 对象
-          var _this = $(this);
-          var callback = _this.attr('data-callback');
-
-          window.URL = window.URL || window.webkitURL;
-
-          var imgFile = $(this).get(0);
-
-          if (window.URL && imgFile.files[0]) {
-            var reader = new FileReader();
-            reader.readAsDataURL(imgFile.files[0]);
-            reader.onload = function (e) {
-              var img = '<img src="' + this.result + '" alt=""/>';
-              //console.log($(img));console.log($($(img)[0]));console.log($($(img)[0]).width());alert($(img)[0].width+"==bbb");
-              var img1 = document.createElement('img');//创建 img 对象
-              $(img1).attr("src", this.result).load(function () {
-                $(img1).attr("data-width", this.width).attr("data-height", this.height);
-                _this.parent().find('img').remove();
-                _this.parent().append(img1);
-              });
-              //_this.parent().find('img').remove();
-              //_this.parent().append(img);
-
-              if (callback) {
-                eval(callback + '()');
-              }
-            }
-          }
-        });
-
-        //添加图片对话
-        var pic_i = 0;
-        $('body').on('click', '.a-u-dialog-pic a', function () {
-          $('.i-body').css('background', 'none');
-          var user = $(this).parents('.add-user');
-          var name = user.find('.a-u-name .a-u-data-name').val();
-          var img = $(this).parent().parent().find('.a-u-pic-show img').clone();
-          var pic = $(this).parent().parent().find('.a-u-pic-show-pic img').clone();
-          var type = user.find('.a-u-dialog-master a').hasClass('btn-success');
-          pic_i = pic_i + 1;
-          if (name == '') {
-            alert('请输入用户名！');
-            return false;
-          }
-
-          if (!pic.length) {
-            alert('您没有上传图片！');
-            return false;
-          }
-
-          if (!img.length) {
-            img = '<img src="/Public/Home/images/face/default-head.png" />';
-          }
-
-          var wrap_class = !type ? 'i-b-rec-text' : 'i-b-sen-text';
-          var nick = type ? '' : '<p class="i-b-nick">' + name + '</p>';
-          var pic_type = !type ? 'wx_pic_pos2' : 'wx_pic_pos';
-
-          var unread = '';//type ? '' : '<strong></strong>';
-
-          var span_height = pic.attr('data-height') / (pic.attr('data-width') / 209);
-
-          var html = $('<div class="' + wrap_class + '"><div class="i-b-voice">' + nick + '<span class="wx_pic_diy" id="s' + pic_i + '" style="height:' + span_height + 'px"><h6 class="' + pic_type + '"></h6><a class="msg-del"></a></span></div></div>');
-
-          html.prepend(img);
-
-          $('.i-body').append(html);
-
-          $('#s' + pic_i).prepend(pic);
-
-
-          return false;
-        });
-
-        //添加用户
-        $('#add-user').click(function () {
-          var time = (new Date()).valueOf();
-          var html = $('<div class="add-user"><div class="a-u-pic"><div class="a-u-pic-show"><input type="file" accept="image/jpeg,image/x-png" /></div></div><div class="a-u-name"><p><span>用户名：</span><input class="a-u-data-name" type="text" value="" /></p><p><span>聊天内容：</span><textarea class="a-u-content' + time + '"></textarea><a class="a-u-face btn-add-face" data-input="a-u-content' + time + '" href="#">表情</a></p><p><span>红包祝福语：</span><input class="a-u-data-redpacket" type="text" value="恭喜发财，大吉大利！"></p><p><span>转账/收钱金额：</span><input class="a-u-data-pay" type="text" value="" /></p><p><span>语音时间：</span><input class="a-u-data-voice" type="text" value="" /></p><p><input style="margin-right:5px;" class="btn-rand-username" type="button" value="随机用户名" /><input class="btn-rand-face" type="button" value="随机头像" /></p><p><div class="a-u-pic-pic"><div class="a-u-pic-show-pic"><input type="file" class="a-u-data-pic" accept="image/jpeg,image/x-png"></div></div></p></div><div class="a-u-dialog" style="clear:both;"><a class="btn btn-primary" data-type="left" href="#">添加文字对话</a></div><div class="a-u-dialog-pic"><a class="btn btn-warning" data-type="left" href="#">添加图片对话</a></div><div class="a-u-dialog-voice"><a class="btn btn-primary" data-type="left" href="#">添加语音对话</a></div><div class="a-u-dialog-sedpacket"><a class="btn btn-danger" data-type="left" href="#">添加发红包对话</a></div><div class="a-u-dialog-redpacket"><a class="btn btn-danger" data-type="left" href="#">添加收红包对话</a></div><div class="a-u-dialog-pay"><a class="btn btn-primary" data-dir="send" data-type="left" href="#">添加转账对话</a></div><div class="a-u-dialog-pay"><a class="btn btn-primary" data-dir="rec" data-type="left" href="#">添加收钱对话</a></div><div class="a-u-dialog-master"><a class="btn btn-primary" href="#">设为主人</a></div><div class="a-u-dialog-del"><a class="btn btn-danger" href="#">删除用户</a></div></div>');
-          $('.users').append(html);
-          html.find('.btn-rand-username').click();
-        });
-
-        //删除用户
-        $('body').on('click', '.a-u-dialog-del', function () {
-          if (confirm('您确认要删除？')) {
-            $(this).parents('.add-user').remove();
-          }
-          return false;
-        });
-
-        /*$('body').on('mouseover','.i-b-time,.i-b-rec-text,.i-b-sen-text',function(){
-        $(this).find('.msg-del').show();
-        });
-        $('body').on('mouseout','.i-b-time,.i-b-rec-text,.i-b-sen-text',function(){
-        $(this).find('.msg-del').hide();
-        });*/
-
-
-
-        $('body').on('click', '.msg-del', function () {
-          $(this).parents('.i-b-time,.i-b-rec-text,.i-b-sen-text').remove();
-        });
-
-        $('.clear-dialog').click(function () {
-          if (confirm('您确认要清除所有对话？')) {
-            $('.i-b-time,.i-b-rec-text,.i-b-sen-text').remove();
-          }
-        });
-
-        //添加发红包对话
-        $('body').on('click', '.a-u-dialog-sedpacket a', function () {
-          var user = $(this).parents('.add-user');
-          var type = user.find('.a-u-dialog-master a').hasClass('btn-success');
-          var index = user.index();
-          var name = user.find('.a-u-name .a-u-data-name').val();
-          var redpacket = user.find('.a-u-name .a-u-data-redpacket').val();
-          var img = $(this).parent().parent().find('.a-u-pic-show img').clone();
-
-          if (name == '') {
-            alert('请输入用户名！');
-            return false;
-          }
-
-          if (redpacket == '') {
-            redpacket = '恭喜发财，大吉大利！';
-          }
-
-          if (!img.length) {
-            img = '<img src="/Public/Home/images/face/default-head.png" />';
-          }
-
-          var wrap_class = !type ? 'i-b-rec-text' : 'i-b-sen-text';
-          var nick = type ? '' : '<p class="i-b-nick">' + name + '</p>';
-
-          var html = $('<div class="' + wrap_class + '"><div class="redpacket">' + nick + '<div class="content"><i class="arraw"><b></b></i><div class="main clear-div"><i class="icon"></i><h3>' + redpacket + '</h3></div><div class="clear-div foot"><h3>微信红包</h3></div><a class="msg-del"></a></div></div></div>');
-          html.prepend(img);
-          $('.i-body').append(html);
-
-          return false;
-        });
-
-        //添加收红包对话
-        $('body').on('click', '.a-u-dialog-redpacket a', function () {
-          var user = $(this).parents('.add-user');
-          var type = user.find('.a-u-dialog-master a').hasClass('btn-success');
-          var name = user.find('.a-u-name .a-u-data-name').val();
-          var user_num = $(this).parents().parents().find('.add-user').length;
-          if (type) {
-            $(this).parents().parents().find('.add-user').each(function (index, element) {
-              if ($(this).find('.a-u-dialog-master a').hasClass('btn-success')) {
-                indexs = index;
-                return false;
-              }
-            });
-            var rand = get_random_num(0, user_num - 1);
-            if (rand == indexs) {
-              rand = (rand < (user_num - 1)) ? rand + 1 : rand - 1;
-            }
-            name = $($(this).parents().parents().find('.add-user')[rand]).find('.a-u-name .a-u-data-name').val();
-          }
-
-
-          var word = !type ? name + '领取了你的' : '你领取了' + name + '的';
-          var nick = type ? '' : '<p class="i-b-nick">' + name + '</p>';
-
-          //var html = $('<div class="' + wrap_class + '"><div class="redpacket">' + nick + '<div class="content"><i class="arraw"><b></b></i><div class="main clear-div"><i class="icon"></i><h3>' + redpacket + '</h3><h4>领取红包</h4></div><div class="clear-div foot"><h3>微信红包</h3></div><a class="msg-del"></a></div></div></div>');
-          var html = $('<div class="i-b-time"><span><img src="./images/a-redpacket-icon.png" class="icon_redpacket"> ' + word + '<a class="orange">红包</a></span><a class="msg-del"></a></div>');
-          $('.i-body').append(html);
-
-          return false;
-        });
-
-        //添加转账对话
-        $('body').on('click', '.a-u-dialog-pay a', function () {
-          var dir = $(this).attr('data-dir');
-          var user = $(this).parents('.add-user');
-          var type = user.find('.a-u-dialog-master a').hasClass('btn-success');
-          var index = user.index();
-          var name = user.find('.a-u-name .a-u-data-name').val();
-          var pay = user.find('.a-u-name .a-u-data-pay').val();
-          var img = $(this).parent().parent().find('.a-u-pic-show img').clone();
-
-          if (name == '') {
-            alert('请输入用户名！');
-            return false;
-          }
-
-          if (pay == '') {
-            alert('请输入转账/收钱金额！');
-            return false;
-          }
-
-          if (isNaN(pay)) {
-            alert('您输入的金额有误！');
-            return false;
-          }
-
-          if (!img.length) {
-            img = '<img src="images/default-head.png" />';
-          }
-
-          var wrap_class = !type ? 'i-b-rec-text' : 'i-b-sen-text';
-          var pay_class = dir == 'send' ? 'i-pay-send' : 'i-pay-rec';
-          var nick = type ? '' : '<p class="i-b-nick">' + name + '</p>';
-
-          var html = $('<div class="' + wrap_class + '"><div class="i-b-pay">' + nick + '<span class="' + pay_class + '"><i></i><em>' + toDecimal2(pay) + '</em><a class="msg-del"></a></span></div></div>');
-          html.prepend(img);
-          $('.i-body').append(html);
-          //显示名称
-          $(".radio-i-b-nick:checked").click();
-          return false;
-        });
-
-        //添加语音对话
-        $('body').on('click', '.a-u-dialog-voice a', function () {
-          var user = $(this).parents('.add-user');
-          var name = user.find('.a-u-name .a-u-data-name').val();
-          var img = $(this).parent().parent().find('.a-u-pic-show img').clone();
-          var voice = user.find('.a-u-name .a-u-data-voice').val();
-          var type = user.find('.a-u-dialog-master a').hasClass('btn-success');
-
-          if (name == '') {
-            alert('请输入用户名！');
-            return false;
-          }
-
-          if (voice == '') {
-            alert('请输入语音时间！');
-            return false;
-          }
-
-          if (isNaN(voice)) {
-            alert('您输入的语音时间有误！');
-            return false;
-          }
-
-          if (!img.length) {
-            img = '<img src="images/default-head.png" />';
-          }
-
-          var wrap_class = !type ? 'i-b-rec-text' : 'i-b-sen-text';
-          var nick = type ? '' : '<p class="i-b-nick">' + name + '</p>';
-
-          var v_len = 0;
-          var len = 0;
-          v_len = voice > 60 ? 60 : voice;
-          len = (360 - 96) / 60 * v_len + 96;
-
-          var unread = '';//type ? '' : '<strong></strong>';
-
-          var html = $('<div class="' + wrap_class + '"><div class="i-b-voice">' + nick + '<span style="width:' + len + 'px"><i></i><b></b><em>' + voice + '\'\'</em>' + unread + '<a class="msg-del"></a></span></div></div>');
-
-          html.prepend(img);
-          $('.i-body').append(html);
-          //显示名称
-          $(".radio-i-b-nick:checked").click();
-          return false;
-        });
-
-        //主人切换
-        $('body').on('click', '.a-u-dialog-master a', function () {
-          var parent = $(this).parents('.users');
-          parent.find('.a-u-dialog-master a').removeClass('btn-success');
-          $(this).addClass('btn-success');
-          return false;
-        });
-
-        $('.body_bg_del').click(function () {
-          $('.i-body').css('background-image', 'none');
-          $('.a-u-pic-bodybg img').remove();
-          return false;
-        });
-
-        $('#add-user').click();
-
-        setTimeout(function () {
-          $('.btn-rand-face').click();
-          $('.btn-rand-username').click();
-
-          var _title = '';
-          $(".a-u-data-name").each(function () {
-            _title = $(this).val();
-          });
-
-          /*$('.input-common').val(_title);
-          $('.i-n-name span').text(_title);*/
-        }, 500);
-      </script>
-
     </div>
     <!-- /主体 -->
+    
   </div>
 
   <!-- 底部 -->
@@ -987,96 +536,6 @@
       <a>继续制作</a>
     </div>
   </div>
-
-  <iframe id="ifm" frameborder="0" class="hide_ifm" src="/wx/blank_wxduihua.html"></iframe>
-
-  <script>
-    function makePic(obj) {
-      var _this = obj;
-      var div = $('#iphone').clone();
-
-      var my_image = $('.my-image');
-      var mask = $('.mask');
-      if (!my_image.length) {
-        my_image = $('<div class="my-image">成功生成图片，点击 <a class="my-image-view" target="_blank" href="#">这里</a> 查看，<a class="my-image-continue" href="#">继续制作</a></div>');
-        $('body').append(my_image);
-      }
-      if (!mask.length) {
-        $('body').append('<div class="mask"></div>');
-      }
-
-      div.removeClass('iphone-preview');
-      div.css({
-        zoom: 1,
-        position: 'absolute',
-        left: 0,
-        top: 0
-      });
-      $('#ifm').contents().find('body').append(div);
-      _this.hide();
-      $('.loading').show();
-      $('.my-image').hide();
-      $('.mask').hide();
-
-
-      html2canvas(div, {
-        onrendered: function (canvas) {
-          var myImage = canvas.toDataURL("image/png");
-
-          var pop_pic = $('.pop-pic');
-          var pop_class = 'pc';
-          if (browser.versions.mobile) {
-            pop_class = 'mobile';
-          }
-          pop_pic.find('.tips').addClass(pop_class);
-          pop_pic.find('img').attr('src', myImage);
-
-          try {
-            pop_pic.show();
-          } catch (error) {
-
-          }
-          $('#wrapper').hide();
-          $('.loading').hide();
-          _this.show();
-
-
-          div.remove();
-        }
-      });
-      return false;
-    }
-    $(function () {
-      $('.pop-pic .tips a').click(function () {
-        $('.pop-pic').hide();
-        $('#wrapper').show();
-      });
-
-      $('#save').click(function () {
-        start_make($(this));
-      });
-
-      /*背景选择ss*/
-      $(".btn-bgModal").click(function () {
-        var _arr = ['images/bg/12.jpeg', 'images/bg/13.jpeg', 'images/bg/11.jpeg', 'images/bg/10.jpeg', 'images/bg/9.jpeg', 'images/bg/8.jpeg', 'images/bg/7.jpeg', 'images/bg/6.jpeg', 'images/bg/5.jpeg', 'images/bg/4.jpeg', 'images/bg/2.jpeg', 'images/bg/3.jpeg', 'images/bg/1.png', 'images/bg/1.jpeg'];
-        var _html = '<ul>';
-        for (var i in _arr) {
-          _html += '<li><a href="javascript:void(0);"><img src="picture/56b76067c0444761b633389802e7c352.gif' + _arr[i] + '" ></a></li>';
-        }
-        _html += '</ul>';
-        //选择背景
-        _html = $(_html)
-        _html.find('img').click(function () {
-          var src = $(this).attr('src');
-          $('.a-u-pic-bodybg img').attr("src", src);
-          $('.i-body').css('background-image', "url('images / 4f3daeac1d0d495191cbecdc3ca9b5b2.gif')");
-
-        });
-        $("#bglist").html(_html);
-      });
-
-    });
-  </script>
 </body>
 
 </html>
